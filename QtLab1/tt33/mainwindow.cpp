@@ -6,12 +6,15 @@
 #include<QString>
 #include<QRect>
 #include<QLineEdit>
+#include<QTableWidgetItem>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     ui->TableWidget->setColumnCount(7);
+    ui->TableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    //TableWidget->setEditTriggers(0);
     QStringList list;
     list << "Date" << "Next day" << "Previous day" << "is Leap" << "Week number" << "Days till birth" << "Duration";
     ui->TableWidget->setHorizontalHeaderLabels(list);
@@ -251,7 +254,7 @@ void MainWindow::on_addCurrDate_clicked()
 void MainWindow::on_getDataFromFile_clicked()
 {
 
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Open a file with dates"), "D:/max/t", tr("Text File (*.txt)"));
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open a file with dates"), "D:/max/tt33", tr("Text File (*.txt)"));
     if (fileName.isEmpty())
     {
         return;
